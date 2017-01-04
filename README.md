@@ -4,7 +4,7 @@ In an effort to make curating categories of work easier, sometimes it's good to 
 
 This is the source code for the steem-seeress bot that runs on Discord. You don't need to do anything with this code to use the bot, please see the article detailing how to use the seeress at:
 
-LINK TBA
+https://steemit.com/tools/@triddin/introducing-steem-seeress-bot-for-discord
 
 # Running your own bot
 
