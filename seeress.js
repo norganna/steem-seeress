@@ -350,6 +350,21 @@ function load_channels() {
     channels = channel_watch;
 }
 
+load();
+
+if (state.discord_token === DEFAULT_TOKEN) {
+	save();
+	console.log("Edit config.json to set your discord token");
+	process.exit(1);
+}
+
+console.log('Connecting...');
+
+var bot = new Discord.Client({
+        token: state.discord_token,
+        autorun: true
+});
+
 bot.on('ready', function() {
     console.log('Bot', bot.username, '(' + bot.id + ') is ready');
 
@@ -384,21 +399,6 @@ bot.on('any', function() {
     console.log('Bot got', arguments);
 });
 //*/
-
-load();
-
-if (state.discord_token === DEFAULT_TOKEN) {
-	save();
-	console.log("Edit config.json to set your discord token");
-	process.exit(1);
-}
-
-console.log('Connecting...');
-
-var bot = new Discord.Client({
-        token: state.discord_token,
-        autorun: true
-});
 
 var client = new rpc.Client(state.steemd_options);
 

@@ -11,7 +11,7 @@
 	},
 	"devDependencies": {},
 	"scripts": {
-		"bot": "node seeress.js"
+		"bot": "node seeress.js || echo 'Failed running bot.'"
 	},
 	"author": "norganna",
 	"license": "MIT"
