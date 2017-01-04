@@ -69,6 +69,12 @@ var process_block = function(block, blockid) {
                         tags = meta.tags,
                         interested = null;
 
+                    if (!tags) {
+                        tags = [];
+                    }
+
+                    tags.unshift(parent_permlink);
+
                     body = html_strip.html_strip(body, {compact_whitespace: true, include_attributes: { alt: true, title: true }});
 
                     for (var cid in channels) {
@@ -83,20 +89,24 @@ var process_block = function(block, blockid) {
                         }
 
                         else if (negative_rex.test(title)) {
+                            console.log("Not interested title");
                             interested = false;
                         }
 
                         else if (negative_rex.test(at_author)) {
+                            console.log("Not interested author");
                             interested = false;
                         }
 
                         else if (negative_rex.test(body)) {
+                            console.log("Not interested body");
                             interested = false;
                         }
 
-                        else if (tags) for (var k = 0; k < tags.length; k++) {
+                        else for (var k = 0; k < tags.length; k++) {
                             var tag = '#' + tags[k];
                             if (negative_rex.test(tag)) {
+                                console.log("Not interested: ", tag);
                                 interested = false;
                                 break;
                             }
@@ -109,7 +119,7 @@ var process_block = function(block, blockid) {
 
                         else if (positive_rex === true) {
                             // We're watching for all stories
-                            interested = '';
+                            interested = ' matched';
                         }
 
                         else if (positive_rex.test(title)) {
@@ -154,10 +164,10 @@ var process_block = function(block, blockid) {
                             interested = ' with ‘' + m[0] + '’ keyword in body: “' + found + '”';
                         }
 
-                        else if (tags) for (var k = 0; k < tags.length; k++) {
+                        else for (var k = 0; k < tags.length; k++) {
                             var tag = '#' + tags[k];
                             if (positive_rex.test(tag)) {
-                                interested = 'with the ‘' + tag + '’ tag';
+                                interested = ' with the ‘' + tag + '’ tag';
                                 break;
                             }
                         }
@@ -248,7 +258,7 @@ function make_rex(words) {
         );
     }
 
-    var rex_text = '\\b(' + rex_list.join('|') + ')\\b';
+    var rex_text = '(?:\\b|\\s|^)(' + rex_list.join('|') + ')\\b';
     return new RegExp(rex_text, 'i');
 }
 
