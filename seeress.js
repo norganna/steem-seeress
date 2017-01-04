@@ -66,8 +66,7 @@ var process_block = function(block, blockid) {
                         permlink = c.permlink,
                         body = c.body,
                         meta = JSON.parse(c.json_metadata ? c.json_metadata : '{}'),
-                        tags = meta.tags,
-                        interested = null;
+                        tags = meta.tags;
 
                     if (!tags) {
                         tags = [];
@@ -82,6 +81,8 @@ var process_block = function(block, blockid) {
 
                         var negative_rex = chan.negative,
                             positive_rex = chan.positive;
+
+                        var interested = null;
 
                         // Check first to see if any of the negatives match, if so, abort.
                         if (!negative_rex) {
