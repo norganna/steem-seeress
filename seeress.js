@@ -385,7 +385,7 @@ function load_channels() {
 
         if (!chan.topic) continue;
 
-        var m = chan.topic.match(/steem-seeress=([^;\n]+)/);
+        var m = chan.topic.match(/steem-seeress=\s*([^;\n]+)\s*/);
         if (m && m[1]) {
             var matches = m[1].split(/\s*:\s*/);
             var words_list = [];
