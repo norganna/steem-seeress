@@ -1,18 +1,19 @@
 {
-	"name": "steem-seeress",
-	"version": "1.0.0",
-	"description": "Discord watcher bot for new STEEM stories",
-	"main": "seeress.js",
-	"dependencies": {
-		"discord.io": "^2.3.0",
-		"htmlstrip-native": "^0.1.3",
-		"lodash": "^4.17.4",
-		"node-json-rpc": "0.0.1"
-	},
-	"devDependencies": {},
-	"scripts": {
-		"bot": "node seeress.js || echo 'Failed running bot.'"
-	},
-	"author": "norganna",
-	"license": "MIT"
+  "name": "steem-seeress",
+  "version": "1.0.0",
+  "description": "Discord watcher bot for new STEEM stories",
+  "main": "seeress.js",
+  "dependencies": {
+    "discord.io": "^2.3.0",
+    "htmlstrip-native": "^0.1.3",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1",
+    "node-json-rpc": "0.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "bot": "node seeress.js || echo 'Failed running bot.'"
+  },
+  "author": "norganna",
+  "license": "MIT"
 }
